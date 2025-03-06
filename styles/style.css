@@ -74,7 +74,7 @@ button {
 
 .dropbtn {
   padding: var(--button-spacing);
-  font-size: var(--large-font-size);
+  font-size: var(--primary-font-size);
   border: none;
   cursor: pointer;
 }
