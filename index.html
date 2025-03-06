@@ -4,6 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="display">0</div>
+      <div class="calulate-degree">
+        <button class="highlight">DEG</button>
+        <button class="highlight">F-E</button>
+      </div>
+      <div class="memory-clear-container">
+        <button class="highlight fade-color">MC</button>
+        <button class="highlight fade-color">MR</button>
+        <button class="highlight">M+</button>
+        <button class="highlight">M-</button>
+        <button class="highlight">MS</button>
+      </div>
+      <div class="advcance-functions">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">
+            <img aria-hidden="true" src="assets/trigonometry.svg" alt="" />
+            trigonometry
+            <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+            <p>sin(x)</p>
+            <p>cos(x)</p>
+            <p>tan(x)</p>
+          </div>
+        </div>
+        <div class="functions-dropdown">
+          <button onclick="functionDropdown()" class="functionDropbtn">
+            <img
+              aria-hidden="true"
+              src="assets/function.svg"
+              alt="functions icon"
+            />
+            function
+            <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
+          </button>
+          <div id="functionDropdown" class="function-dropdown-content">
+            <p>floor(x)</p>
+            <p>ceil(x)</p>
+          </div>
+        </div>
+      </div>
+      <div class="operations">
+        <div class="row-1">
+          <button class="col">2<sup>nd</sup></button>
+          <button class="col">x <sup>2</sup></button>
+          <button class="col"><sup>2</sup>√x</button>
+          <button class="col">x<sup>y</sup></button>
+          <button class="col">10<sup>x</sup></button>
+          <button class="col">log</button>
+          <button class="col">ln</button>
+        </div>
+        <div class="row-1">
+          <button class="col">π</button>
+          <button class="col"><sup>1</sup>/x</button>
+          <button class="col">(</button>
+          <button class="col highlight number">7</button>
+          <button class="col highlight number">4</button>
+          <button class="col highlight number">1</button>
+          <button class="col highlight number">+/-</button>
+        </div>
+        <div class="row-1">
+          <button class="col">e</button>
+          <button class="col">| x |</button>
+          <button class="col">)</button>
+          <button class="col highlight number">8</button>
+          <button class="col highlight number">5</button>
+          <button class="col highlight number">2</button>
+          <button class="col highlight number">0</button>
+        </div>
+        <div class="row-1">
+          <button class="col">C</button>
+          <button class="col">exp</button>
+          <button class="col">n!</button>
+          <button class="col highlight number">9</button>
+          <button class="col highlight number">6</button>
+          <button class="col highlight number">3</button>
+          <button class="col highlight number">.</button>
+        </div>
+        <div class="row-1">
+          <button class="col">
+            <img src="assets/cross.svg" alt="remove an element" />
+          </button>
+          <button class="col">mod</button>
+          <button class="col">÷</button>
+          <button class="col">x</button>
+          <button class="col">−</button>
+          <button class="col">+</button>
+          <button class="col equals">=</button>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
 </html>
