@@ -15,7 +15,7 @@
   --primary-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   --primary-bg-button: #f1f1f1;
   --padding-display: 20px;
-  --dropdown-hover-color: #ddd;
+  --dropdown-hover-color: #dfdfdf;
 }
 
 * {
@@ -46,6 +46,15 @@ button {
   border: none;
   font-size: var(--primary-font-size);
   padding: var(--button-spacing);
+  cursor: pointer;
+}
+
+button:hover:not(.equals) {
+  background-color: var(--dropdown-hover-color);
+}
+
+.memory-clear-container button:hover {
+  background-color: var(--dropdown-hover-color);
 }
 
 .dropbtn,
