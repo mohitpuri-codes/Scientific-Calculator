@@ -3,12 +3,12 @@
   --primary-white: white;
   --main-bg-color: #f5f5f5;
   --gap-space: 2px;
-  --button-spacing: 15px 10px;
+  --button-spacing: 10px 2px;
   --large-font-size: 60px;
   --main-width: 450px;
   --font-bold: bold;
-  --primary-blue: #92c2e8;
-  --main-padding: 0 2px;
+  --primary-blue: #7ec6ff;
+  --main-margin: 0 4px;
   --fade-color-button: #c9c9c9;
   --primary-font-size: 18px;
   --flex-gap: 10px;
@@ -16,6 +16,9 @@
   --primary-bg-button: #f1f1f1;
   --padding-display: 20px;
   --dropdown-hover-color: #dfdfdf;
+  --primary-blue-on-hover: #92c2e8;
+  --trigonometry-dropdown-width: 165px;
+  --function-dropdown-width: 130px;
 }
 
 * {
@@ -34,7 +37,7 @@ body {
 
 main {
   background-color: var(--main-bg-color);
-  padding: var(--main-padding);
+  margin: var(--main-margin);
   max-width: var(--main-width);
   width: 100%;
   display: flex;
@@ -97,18 +100,19 @@ button:hover:not(.equals) {
   display: none;
   position: absolute;
   background-color: var(--primary-bg-button);
-  min-width: 160px;
+  min-width: var(--trigonometry-dropdown-width);
   box-shadow: var(--primary-box-shadow);
   z-index: 1;
 }
 
-.dropdown-content p {
-  padding: 12px 16px;
+.dropdown-content button {
+  padding: var(--button-spacing);
   text-decoration: none;
   display: block;
+  width: 100%;
 }
 
-.dropdown-content p:hover {
+.dropdown-content button:hover {
   background-color: var(--dropdown-hover-color);
 }
 
@@ -117,7 +121,7 @@ button:hover:not(.equals) {
 }
 
 .functionDropbtn {
-  padding: 16px;
+  padding: var(--button-spacing);
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -132,15 +136,16 @@ button:hover:not(.equals) {
   display: none;
   position: absolute;
   background-color: var(--primary-bg-button);
-  min-width: 160px;
+  min-width: var(--function-dropdown-width);
   box-shadow: var(--primary-box-shadow);
   z-index: 1;
 }
 
-.function-dropdown-content p {
-  padding: 12px 16px;
+.function-dropdown-content button {
+  padding: var(--button-spacing);
   text-decoration: none;
   display: block;
+  width: 100%;
 }
 
 .function-dropdown-content p:hover {
@@ -184,6 +189,10 @@ button:hover:not(.equals) {
   background-color: var(--primary-blue);
 }
 
+.equals:hover {
+  background-color: var(--primary-blue-on-hover);
+}
+
 .highlight {
   font-weight: var(--font-bold);
 }
@@ -195,4 +204,15 @@ button:hover:not(.equals) {
 .memory-clear-container button,
 .calulate-degree button {
   background-color: inherit;
+}
+
+.advance-functions {
+  display: flex;
+  gap: 10px;
+}
+
+@media only screen and (min-width: 350px) {
+  .advance-functions {
+    margin-left: 10px;
+  }
 }
