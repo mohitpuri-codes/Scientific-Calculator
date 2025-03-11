@@ -76,6 +76,10 @@ button:hover:not(.equals) {
   font-size: var(--large-font-size);
   text-align: right;
   font-weight: var(--font-bold);
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 500px;
+  width: 100%;
 }
 
 .fade-color {
