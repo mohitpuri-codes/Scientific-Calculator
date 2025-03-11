@@ -10,15 +10,15 @@
     <main>
       <div class="display">0</div>
       <div class="calulate-degree">
-        <button class="highlight">DEG</button>
-        <button class="highlight">F-E</button>
+        <button class="highlight" value="degree">DEG</button>
+        <button class="highlight" value="F-E">F-E</button>
       </div>
       <div class="memory-clear-container">
-        <button class="highlight fade-color">MC</button>
-        <button class="highlight fade-color">MR</button>
-        <button class="highlight">M+</button>
-        <button class="highlight">M-</button>
-        <button class="highlight">MS</button>
+        <button class="highlight fade-color" value="MC">MC</button>
+        <button class="highlight fade-color" value="MR">MR</button>
+        <button class="highlight" value="M+">M+</button>
+        <button class="highlight" value="M-">M-</button>
+        <button class="highlight" value="MS">MS</button>
       </div>
       <div class="advance-functions">
         <div class="dropdown">
@@ -31,10 +31,10 @@
             Trigonometry
             <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
           </button>
-          <div id="myDropdown" class="dropdown-content">
-            <button>sin(x)</button>
-            <button>cos(x)</button>
-            <button>tan(x)</button>
+          <div id="trigonometryDropdown" class="dropdown-content">
+            <button value="sin">sin(x)</button>
+            <button value="cos">cos(x)</button>
+            <button value="tan">tan(x)</button>
           </div>
         </div>
         <div class="functions-dropdown">
@@ -48,62 +48,58 @@
             <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
           </button>
           <div id="functionDropdown" class="function-dropdown-content">
-            <button>floor(x)</button>
-            <button>ceil(x)</button>
+            <button value="floor">floor(x)</button>
+            <button value="ceil">ceil(x)</button>
           </div>
         </div>
       </div>
       <div class="operations keys">
         <div class="row-1">
-          <button class="col">2<sup>nd</sup></button>
-          <button class="col">x<sup>2</sup></button>
-          <button class="col"><sup>2</sup>√x</button>
-          <button class="col">x<sup>y</sup></button>
-          <button class="col">10<sup>x</sup></button>
-          <button class="col">log</button>
-          <button class="col">ln</button>
+          <button class="col" value="2nd">2<sup>nd</sup></button>
+          <button class="col" value="square">x<sup>2</sup></button>
+          <button class="col" value="√"><sup>2</sup>√x</button>
+          <button class="col" value="power">x<sup>y</sup></button>
+          <button class="col" value="10^x">10<sup>x</sup></button>
+          <button class="col" value="log">log</button>
+          <button class="col" value="ln">ln</button>
         </div>
         <div class="row-1">
-          <button class="col">π</button>
-          <button class="col"><sup>1</sup>/x</button>
-          <button class="col">(</button>
-          <button class="col highlight number" name="7">7</button>
-          <button class="col highlight number" name="4">4</button>
-          <button class="col highlight number" name="1">1</button>
-          <button class="col highlight number">+/-</button>
+          <button class="col" value="3.14">π</button>
+          <button class="col" value="1/x"><sup>1</sup>/x</button>
+          <button class="col" value="(">(</button>
+          <button class="col highlight number" value="7">7</button>
+          <button class="col highlight number" value="4">4</button>
+          <button class="col highlight number" value="1">1</button>
+          <button class="col highlight number" value="+/-">+/-</button>
         </div>
         <div class="row-1">
-          <button class="col">e</button>
-          <button class="col">| x |</button>
-          <button class="col">)</button>
-          <button class="col highlight number" name="8">8</button>
-          <button class="col highlight number" name="5">5</button>
-          <button class="col highlight number" name="2">2</button>
-          <button class="col highlight number" name="0">0</button>
+          <button class="col" value="e">e</button>
+          <button class="col" value="abs">| x |</button>
+          <button class="col" value=")">)</button>
+          <button class="col highlight number" value="8">8</button>
+          <button class="col highlight number" value="5">5</button>
+          <button class="col highlight number" value="2">2</button>
+          <button class="col highlight number" value="0">0</button>
         </div>
         <div class="row-1">
-          <button class="col">C</button>
-          <button class="col">exp</button>
-          <button class="col">n!</button>
-          <button class="col highlight number" name="9">9</button>
-          <button class="col highlight number" name="6">6</button>
-          <button class="col highlight number" name="3">3</button>
-          <button class="col highlight number" name=".">.</button>
+          <button class="col" value="C">C</button>
+          <button class="col" value="exp">exp</button>
+          <button class="col" value="factorial">n!</button>
+          <button class="col highlight number" value="9">9</button>
+          <button class="col highlight number" value="6">6</button>
+          <button class="col highlight number" value="3">3</button>
+          <button class="col highlight number" value=".">.</button>
         </div>
         <div class="row-1">
-          <button class="col" name="backspace">
-            <img
-              name="backspace"
-              src="assets/cross.svg"
-              alt="remove an element"
-            />
+          <button class="col" value="backspace">
+            <img src="assets/cross.svg" alt="remove an element" />
           </button>
-          <button class="col">mod</button>
-          <button class="col" name="/">÷</button>
-          <button class="col" name="*">x</button>
-          <button class="col" name="-">−</button>
-          <button class="col" name="+">+</button>
-          <button class="col equals" name="equals">=</button>
+          <button class="col" value="%">mod</button>
+          <button class="col" value="/">÷</button>
+          <button class="col" value="*">x</button>
+          <button class="col" value="-">−</button>
+          <button class="col" value="+">+</button>
+          <button class="col equals" value="equals">=</button>
         </div>
       </div>
     </main>
