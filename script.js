@@ -188,7 +188,7 @@ function xToPowerY() {
 }
 
 function pie() {
-  inputStr += "Math.PI.toFixed(3)";
+  inputStr += "*Math.PI.toFixed(3)";
   displayStr += "π";
   updateDisplay();
 }
@@ -208,7 +208,7 @@ function inverseValue() {
 
 // Function to handle exponent
 function exponent() {
-  inputStr += "Math.E.toFixed(3)";
+  inputStr += "*Math.E.toFixed(3)";
   displayStr += "e";
   updateDisplay();
 }
