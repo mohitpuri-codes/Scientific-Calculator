@@ -67,6 +67,8 @@ function equals() {
       return;
     }
     let result = eval(inputStr);
+    if (inputStr === "") return;
+    addToHistory(inputStr, result);
     inputStr = result.toString();
     displayStr = inputStr;
   } catch (error) {
@@ -437,6 +439,42 @@ function updateMemoryButtons() {
     .forEach((btn) => btn.classList.toggle("fade-color", !hasMemory));
 }
 updateMemoryButtons();
+
+// History functionality
+let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+
+document.querySelector(".history-btn").addEventListener("click", toggleHistory);
+
+function toggleHistory() {
+  let historyContainer = document.querySelector(".history-container");
+  historyContainer.style.display =
+    historyContainer.style.display === "block" ? "none " : "block";
+}
+
+function addToHistory(expression, result) {
+  if (history.length >= 5) {
+    history.shift();
+  }
+
+  history.push(`${expression} = ${result}`);
+  localStorage.setItem("calcHistory", JSON.stringify(history));
+
+  updateHistoryUI();
+}
+
+function updateHistoryUI() {
+  let historyList = document.querySelector(".history-list");
+  historyList.innerHTML = "";
+
+  history.forEach((entry) => {
+    let li = document.createElement("li");
+    li.textContent = entry;
+    historyList.appendChild(li);
+  });
+}
+
+// History loads on page load
+updateHistoryUI();
 
 // dropdown functionality
 document

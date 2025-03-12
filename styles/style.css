@@ -220,3 +220,31 @@ button:hover:not(.equals) {
     margin-left: 10px;
   }
 }
+
+/* history menu */
+
+li {
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.history-parent {
+  position: relative;
+}
+
+.history-container {
+  z-index: 1;
+  position: absolute;
+  background-color: #e8f2ff;
+  padding: 10px;
+  max-width: 450px;
+  top: 22%;
+  display: none;
+  width: 100%;
+}
+
+.history-container p {
+  font-weight: var(--font-bold);
+  margin: 10px 0;
+}
