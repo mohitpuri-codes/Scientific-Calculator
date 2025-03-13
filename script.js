@@ -494,12 +494,13 @@ function addToHistory(expression, result) {
 function updateHistoryUI() {
   let historyList = document.querySelector(".history-list");
   historyList.innerHTML = "";
-
+  const historyFragment = document.createDocumentFragment();
   history.forEach((entry) => {
     let li = document.createElement("li");
     li.textContent = entry;
-    historyList.appendChild(li);
+    historyFragment.appendChild(li);
   });
+  historyList.appendChild(historyFragment);
 }
 
 // History loads on page load
