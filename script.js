@@ -66,7 +66,10 @@ function equals() {
     if (inputStr === ERROR_INPUT || inputStr === ERROR) {
       return;
     }
+    if (inputStr === "") return;
     let result = eval(inputStr);
+    result = parseFloat(result.toFixed(3));
+    addToHistory(displayStr, result);
     inputStr = result.toString();
     displayStr = inputStr;
   } catch (error) {
@@ -83,9 +86,12 @@ function clearCalc() {
 }
 
 function backspace() {
-  if (inputStr.endsWith("**2") || inputStr.endsWith("**3")) {
-    inputStr = inputStr.slice(0, -3); // Remove both **2 or **3
-    displayStr = displayStr.slice(0, -1); // Remove the exponent symbol (² or ³)
+  if (inputStr.endsWith("**")) {
+    inputStr = inputStr.slice(0, -2);
+    displayStr = displayStr.slice(0, -1);
+  } else if (inputStr.endsWith("**2") || inputStr.endsWith("**3")) {
+    inputStr = inputStr.slice(0, -3);
+    displayStr = displayStr.slice(0, -1);
   } else {
     inputStr = inputStr.slice(0, -1);
     displayStr = displayStr.slice(0, -1);
@@ -175,11 +181,14 @@ function square() {
 }
 
 function powerOfTen() {
-  if (!inputStr.endsWith("10**")) {
+  if (inputStr === "" || /[\+\-\*\/\(]$/.test(inputStr)) {
     inputStr += "10**";
     displayStr += "10^";
-    updateDisplay();
+  } else {
+    inputStr += "*10**";
+    displayStr += "*10^";
   }
+  updateDisplay();
 }
 
 function xToPowerY() {
@@ -191,8 +200,13 @@ function xToPowerY() {
 }
 
 function pie() {
-  inputStr += "*Math.PI.toFixed(3)";
-  displayStr += "π";
+  if (inputStr && !isNaN(inputStr[inputStr.length - 1])) {
+    inputStr += "*Math.PI";
+    displayStr += "*π";
+  } else {
+    inputStr += "Math.PI";
+    displayStr += "π";
+  }
   updateDisplay();
 }
 
@@ -211,8 +225,13 @@ function inverseValue() {
 
 // Function to handle exponent
 function exponent() {
-  inputStr += "*Math.E.toFixed(3)";
-  displayStr += "e";
+  if (inputStr && !isNaN(inputStr[inputStr.length - 1])) {
+    inputStr += "*Math.E";
+    displayStr += "*e";
+  } else {
+    inputStr += "Math.E";
+    displayStr += "e";
+  }
   updateDisplay();
 }
 
@@ -348,9 +367,6 @@ function keyClickEventHandler(e) {
     case "π":
       pie();
       break;
-    case "F-E":
-      toggleExponential();
-      break;
     default:
       inputStr += currentKey;
       displayStr += currentKey;
@@ -437,6 +453,58 @@ function updateMemoryButtons() {
     .forEach((btn) => btn.classList.toggle("fade-color", !hasMemory));
 }
 updateMemoryButtons();
+
+// History functionality
+let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+
+document.querySelector(".history-btn").addEventListener("click", toggleHistory);
+document.addEventListener("click", closeHistoryOnClickOutside);
+
+function closeHistoryOnClickOutside(e) {
+  let historyContainer = document.querySelector(".history-container");
+  let historyBtn = document.querySelector(".history-btn");
+
+  if (
+    historyContainer.style.display === "block" &&
+    !historyContainer.contains(e.target) &&
+    !historyBtn.contains(e.target)
+  ) {
+    historyContainer.style.display = "none";
+  }
+}
+
+function toggleHistory(e) {
+  e.stopPropagation();
+  let historyContainer = document.querySelector(".history-container");
+  historyContainer.style.display =
+    historyContainer.style.display === "block" ? "none " : "block";
+}
+
+function addToHistory(expression, result) {
+  if (history.length >= 5) {
+    history.shift();
+  }
+
+  history.push(`${expression} = ${result}`);
+  localStorage.setItem("calcHistory", JSON.stringify(history));
+
+  updateHistoryUI();
+}
+
+function updateHistoryUI() {
+  let historyList = document.querySelector(".history-list");
+  historyList.innerHTML = "";
+  const historyFragment = document.createDocumentFragment();
+  history.forEach((entry) => {
+    let li = document.createElement("li");
+    li.textContent = entry;
+    historyFragment.appendChild(li);
+  });
+  historyList.appendChild(historyFragment);
+}
+
+// History loads on page load
+updateHistoryUI();
 
 // dropdown functionality
 document

@@ -70,6 +70,7 @@ button:hover:not(.equals) {
 }
 
 .display {
+  white-space: nowrap;
   padding-top: var(--padding-display);
   padding-right: var(--padding-display);
   height: 100px;
@@ -219,4 +220,43 @@ button:hover:not(.equals) {
   .advance-functions {
     margin-left: 10px;
   }
+}
+
+/* history menu */
+
+.history-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.history-wrapper button {
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.history-container {
+  z-index: 1;
+  position: absolute;
+  background-color: #e8f2ff;
+  padding: 10px;
+  max-width: 450px;
+  min-width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: var(--primary-box-shadow);
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+}
+
+.history-container p {
+  font-weight: var(--font-bold);
+  margin: 10px 0;
 }
