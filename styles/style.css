@@ -70,6 +70,7 @@ button:hover:not(.equals) {
 }
 
 .display {
+  white-space: nowrap;
   padding-top: var(--padding-display);
   padding-right: var(--padding-display);
   height: 100px;
