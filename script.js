@@ -4,6 +4,8 @@ let inputStr = "";
 let displayStr = "";
 let display = document.querySelector(".display");
 let isSecondFunction = false; // Track 2nd mode
+let isDegree = true; // Track toggle between degree and radians
+let isExponential = false; // Track the scientific notation
 
 document.querySelector(".keys").addEventListener("click", keyClickEventHandler);
 document.addEventListener("keydown", backSpaceEventHandler);
@@ -14,11 +16,12 @@ document
 document
   .querySelector("#functionDropdown")
   .addEventListener("click", keyClickEventHandler);
-
 document
   .querySelector(".memory-clear-container")
   .addEventListener("click", handleMemoryClick);
-
+document
+  .querySelector(".calulate-degree")
+  .addEventListener("click", degreeClickEventHandler);
 // function to handle the backspace
 function backSpaceEventHandler(e) {
   if (e.key === "Backspace") {
@@ -112,19 +115,19 @@ function squareRoot() {
 
 // Trigonometric functions
 function sine() {
-  inputStr += "Math.sin(";
+  inputStr += isDegree ? "Math.sin((Math.PI/180)*" : "Math.sin(";
   displayStr += "sin(";
   updateDisplay();
 }
 
 function cosine() {
-  inputStr += "Math.cos(";
+  inputStr += isDegree ? "Math.cos((Math.PI/180)*" : "Math.cos(";
   displayStr += "cos(";
   updateDisplay();
 }
 
 function tangent() {
-  inputStr += "Math.tan(";
+  inputStr += isDegree ? "Math.tan((Math.PI/180)*" : "Math.tan(";
   displayStr += "tan(";
   updateDisplay();
 }
@@ -305,10 +308,6 @@ function keyClickEventHandler(e) {
     case "backspace":
       backspace();
       break;
-    case "exp":
-      inputStr += "Math.E.toFixed(3)";
-      displayStr += "e";
-      break;
     case "2nd":
       changeMode();
       break;
@@ -366,6 +365,9 @@ function keyClickEventHandler(e) {
       break;
     case "π":
       pie();
+      break;
+    case "exp":
+      toggleExponential();
       break;
     default:
       inputStr += currentKey;
@@ -474,7 +476,6 @@ function closeHistoryOnClickOutside(e) {
 }
 
 function toggleHistory(e) {
-  e.stopPropagation();
   let historyContainer = document.querySelector(".history-container");
   historyContainer.style.display =
     historyContainer.style.display === "block" ? "none " : "block";
@@ -505,6 +506,46 @@ function updateHistoryUI() {
 
 // History loads on page load
 updateHistoryUI();
+
+// change degree to radians and vice-versa
+function degree() {
+  isDegree = !isDegree;
+  document.querySelector("#deg").textContent = isDegree ? "DEG" : "RAD";
+}
+
+function degreeClickEventHandler(e) {
+  let currentKey = e.target.closest("button")?.value;
+
+  switch (currentKey) {
+    case "degree":
+      degree();
+      break;
+    case "F-E":
+      toggleExponential();
+    default:
+      break;
+  }
+}
+
+// toggle displayed value to scientific notation
+function toggleExponential() {
+  if (!inputStr || isNaN(Number(inputStr))) return;
+
+  let num = Number(inputStr);
+  isExponential = !isExponential;
+
+  if (isExponential) {
+    let exponent = num.toExponential().split("e");
+    inputStr = `${exponent[0]}*10**${Number(exponent[1])}`;
+    displayStr = `${exponent[0]}*10^${Number(exponent[1])}`;
+    isExponential = false;
+  } else {
+    inputStr = num.toString();
+    displayStr = inputStr;
+  }
+
+  updateDisplay();
+}
 
 // dropdown functionality
 document
