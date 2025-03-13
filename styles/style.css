@@ -223,14 +223,19 @@ button:hover:not(.equals) {
 
 /* history menu */
 
+.history-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.history-wrapper button {
+  width: 100%;
+}
+
 li {
   list-style: none;
   border-bottom: 1px solid black;
   padding: 5px;
-}
-
-.history-parent {
-  position: relative;
 }
 
 .history-container {
@@ -239,7 +244,13 @@ li {
   background-color: #e8f2ff;
   padding: 10px;
   max-width: 450px;
-  top: 22%;
+  min-width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: var(--primary-box-shadow);
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
   display: none;
   width: 100%;
 }
