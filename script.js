@@ -5,6 +5,7 @@ import {
   CLEAR,
   COS,
   EQUALS_VALUE,
+  ERROR,
   EXP,
   EXPONENT,
   FACTORIAL,
@@ -190,6 +191,7 @@ function keyClickEventHandler(e) {
       toggleExponential();
       break;
     default:
+      if (inputStr === ERROR) return;
       inputStr += currentKey;
       displayStr += currentKey;
       break;
