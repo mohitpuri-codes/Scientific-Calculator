@@ -1,9 +1,17 @@
-// History functionality
+/**
+ * Retrives calculation history from localStorage or initializes an empty array.
+ * @type {string[]}
+ */
 let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
 
+// Event listeners
 document.querySelector(".history-btn").addEventListener("click", toggleHistory);
 document.addEventListener("click", closeHistoryOnClickOutside);
 
+/**
+ * Closes the history panel when clicking outside of it.
+ * @param {*} e - The click event object.
+ */
 function closeHistoryOnClickOutside(e) {
   let historyContainer = document.querySelector(".history-container");
   let historyBtn = document.querySelector(".history-btn");
@@ -17,12 +25,21 @@ function closeHistoryOnClickOutside(e) {
   }
 }
 
+/**
+ * Toggles the visibility of the history panel.
+ * @param {*} e - The click event object.
+ */
 function toggleHistory(e) {
   let historyContainer = document.querySelector(".history-container");
   historyContainer.style.display =
     historyContainer.style.display === "block" ? "none " : "block";
 }
 
+/**
+ * Adds a new calculation to the history and updates localStorage
+ * @param {string} expression - The mathematical expression
+ * @param {string|number} result - The result of the expression
+ */
 export function addToHistory(expression, result) {
   if (history.length >= 5) {
     history.shift();
@@ -34,6 +51,9 @@ export function addToHistory(expression, result) {
   updateHistoryUI();
 }
 
+/**
+ * Updates the history UI with the latest calculations.
+ */
 function updateHistoryUI() {
   let historyList = document.querySelector(".history-list");
   historyList.innerHTML = "";
@@ -46,5 +66,5 @@ function updateHistoryUI() {
   historyList.appendChild(historyFragment);
 }
 
-// History loads on page load
+// Load history on page load
 updateHistoryUI();

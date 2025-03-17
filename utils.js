@@ -1,6 +1,6 @@
 import { ERROR, ERROR_INPUT } from "./constants.js";
 import { addToHistory } from "./history.js";
-import { isDegree } from "./degreeFunctionExponent.js";
+import { getDegree } from "./degreeFunctionExponent.js";
 import {
   updateDisplay,
   getDisplayStr,
@@ -13,6 +13,9 @@ import {
 
 let isSecondFunction = false;
 
+/**
+ * Evaluates the mathematical expression in the input field and updates the display.
+ */
 export function equals() {
   let inputStr = getInputStr();
   let displayStr = getDisplayStr();
@@ -36,13 +39,18 @@ export function equals() {
   updateDisplay();
 }
 
+/**
+ * Clears the calculator display and input fields.
+ */
 export function clearCalc() {
   setInputStr("");
   setDisplayStr("");
-
   updateDisplay();
 }
 
+/**
+ * Removes the last character from the input and display strings.
+ */
 export function backspace() {
   let inputStr = getInputStr();
   let displayStr = getDisplayStr();
@@ -59,9 +67,10 @@ export function backspace() {
   updateDisplay();
 }
 
+/**
+ * Handles the square root or cube root calculation based on the function mode.
+ */
 export function squareRoot() {
-  let inputStr = getInputStr();
-  let displayStr = getDisplayStr();
   if (isSecondFunction) {
     setAndAddInputStr("Math.cbrt(");
     setAndAddDisplayStr("∛(");
@@ -73,59 +82,88 @@ export function squareRoot() {
 }
 
 // Trigonometric functions
+
+/**
+ * Handles sine function calculation with degree or radian mode.
+ */
 export function sine() {
+  let isDegree = getDegree();
   let checkDegree = isDegree ? "Math.sin((Math.PI/180)*" : "Math.sin(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("sin(");
   updateDisplay();
 }
 
+/**
+ * Handles cosine function calculation with degree or radian mode.
+ */
 export function cosine() {
+  let isDegree = getDegree();
   let checkDegree = isDegree ? "Math.cos((Math.PI/180)*" : "Math.cos(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("cos(");
   updateDisplay();
 }
 
+/**
+ * Handles tangent function calculation with degree or radian mode.
+ */
 export function tangent() {
+  let isDegree = getDegree();
   let checkDegree = isDegree ? "Math.tan((Math.PI/180)*" : "Math.tan(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("tan(");
   updateDisplay();
 }
 
-// Floor, Ceil, Log, Absolute Value functions
+/**
+ * Handles the floor function calculations to evaluate the number to its floor value.
+ */
 export function floorValue() {
   setAndAddInputStr("Math.floor(");
   setAndAddDisplayStr("floor(");
   updateDisplay();
 }
 
+/**
+ * Handles the ceil function calculations to evaluate the number to its ceil value.
+ */
 export function ceilValue() {
   setAndAddInputStr("Math.ceil(");
   setAndAddDisplayStr("ceil(");
   updateDisplay();
 }
 
+/**
+ * Handles natural logarithm (ln) function to evaluate the input string.
+ */
 export function logarithm() {
   setAndAddInputStr("Math.log(");
   setAndAddDisplayStr("log(");
   updateDisplay();
 }
 
+/**
+ * Handles log-base10 function to evaluate the input string.
+ */
 export function naturalLogarithm() {
   setAndAddInputStr("Math.log10(");
   setAndAddDisplayStr("ln(");
   updateDisplay();
 }
 
+/**
+ * Handles absolute value calculation of the input string.
+ */
 export function absoluteValue() {
   setAndAddInputStr("Math.abs(");
   setAndAddDisplayStr("abs(");
   updateDisplay();
 }
 
-// Square and Power Functions
+/**
+ * Handles square value calculation of the input string.
+ */
 export function square() {
   // Remove previous exponent if backspaced
   let inputStr = getInputStr();
@@ -147,6 +185,9 @@ export function square() {
   updateDisplay();
 }
 
+/**
+ * Handles value calculation of the input string to the power of 10.
+ */
 export function powerOfTen() {
   let inputStr = getInputStr();
   if (inputStr === "" || /[\+\-\*\/\(]$/.test(inputStr)) {
@@ -159,6 +200,9 @@ export function powerOfTen() {
   updateDisplay();
 }
 
+/**
+ * Handles absolute value calculation of the input string to the power of next input string.
+ */
 export function xToPowerY() {
   let inputStr = getInputStr();
   if (!inputStr.endsWith("**")) {
@@ -168,6 +212,9 @@ export function xToPowerY() {
   }
 }
 
+/**
+ * Handles constant pie value calculation.
+ */
 export function pie() {
   let inputStr = getInputStr();
   if (inputStr && !isNaN(inputStr[inputStr.length - 1])) {
@@ -180,7 +227,9 @@ export function pie() {
   updateDisplay();
 }
 
-// Function to handle inverse (1/x)
+/**
+ * Handles inverse value of the current number in the input string.
+ */
 export function inverseValue() {
   let inputStr = getInputStr();
   if (typeof inputStr !== "string") setInputStr(inputStr.toString());
@@ -191,14 +240,13 @@ export function inverseValue() {
     let replacedInputStr = inputStr.replace(/(\d+(\.\d+)?)$/, inverse);
     setInputStr(replacedInputStr);
     setDisplayStr(getInputStr());
-
-    // inputStr = inputStr.replace(/(\d+(\.\d+)?)$/, inverse);
-    // displayStr = inputStr;
   }
   updateDisplay();
 }
 
-// Function to handle exponent
+/**
+ * Handles Euler's number constant into the input string.
+ */
 export function exponent() {
   let inputStr = getInputStr();
   if (inputStr && !isNaN(inputStr[inputStr.length - 1])) {
@@ -211,6 +259,11 @@ export function exponent() {
   updateDisplay();
 }
 
+/**
+ * Calculates the factorial of a given number.
+ * @param {number} n - The number to compute factorial for.
+ * @returns {number} - The computed factorial value.
+ */
 export function factorial(n) {
   if (n === 0 || n === 1) return 1;
   let result = 1;
@@ -220,7 +273,9 @@ export function factorial(n) {
   return result;
 }
 
-// Function to handle factorial for the last number of user input
+/**
+ * Handles factorial operation for the last entered number.
+ */
 export function factorialHandler() {
   let inputStr = getInputStr();
   if (inputStr === "" || isNaN(inputStr[inputStr.length - 1])) return;
@@ -228,7 +283,6 @@ export function factorialHandler() {
   let num = "";
   let i = inputStr.length - 1;
 
-  // Extract the last number manually
   while (i >= 0 && !isNaN(inputStr[i])) {
     num = inputStr[i] + num;
     i--;
@@ -246,7 +300,9 @@ export function factorialHandler() {
   updateDisplay();
 }
 
-// Function to toggle the sign (+/-)
+/**
+ * Toggles the sign (+/-) of the last number in the input string.
+ */
 export function toggleSign() {
   let inputStr = getInputStr();
   if (inputStr === "") setInputStr("0");
@@ -263,6 +319,9 @@ export function toggleSign() {
   updateDisplay();
 }
 
+/**
+ * Toggles between normal and secondary function modes.
+ */
 export function changeMode() {
   isSecondFunction = !isSecondFunction;
 

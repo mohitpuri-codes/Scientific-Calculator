@@ -5,36 +5,60 @@ import {
   getInputStr,
   updateDisplay,
 } from "./script.js";
+import { DEGREE, FE } from "./constants.js";
 
-export let isDegree = true; // Track toggle between degree and radians
+/**
+ * Tracks wheather the calculator is in degrees mode(true) or radians mode(false)
+ * @type {boolean}
+ */
+let isDegree = true;
+/**
+ * Tracks wheather the scientific notation mode is active
+ * @type {boolean}
+ */
 let isExponential = false; // Track the scientific notation
 
+/**
+ * Adds event listener to handle degree and scientific notation toggle
+ */
 document
   .querySelector(".calulate-degree")
   .addEventListener("click", degreeClickEventHandler);
 
-// change degree to radians and vice-versa
+/**
+ * Toggles between degrees and radians mode
+ */
 function degree() {
   isDegree = !isDegree;
   document.querySelector("#deg").textContent = isDegree ? "DEG" : "RAD";
 }
 
+export function getDegree() {
+  return isDegree;
+}
+
+/**
+ * Handles the click event for toggling degree mode or scientific notation
+ * @param {*} e - The event object
+ */
 function degreeClickEventHandler(e) {
   let currentKey = e.target.closest("button")?.value;
 
   switch (currentKey) {
-    case "degree":
+    case DEGREE:
       degree();
       break;
-    case "F-E":
+    case FE:
       toggleExponential();
     default:
       break;
   }
 }
 
-// toggle displayed value to scientific notation
-function toggleExponential() {
+/**
+ * Toggles the displayed value between standard and scientific notation
+ */
+export function toggleExponential() {
   let inputStr = getInputStr();
   if (!inputStr || isNaN(Number(inputStr))) return;
 
