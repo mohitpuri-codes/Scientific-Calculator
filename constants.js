@@ -2,7 +2,7 @@ export const ERROR = "Error";
 export const ERROR_INPUT = "function Error() { [native code] }";
 export const DEGREE = "degree";
 export const FE = "F-E";
-export const BACKSPACE = "Backspace";
+export const BACKSPACE = "backspace";
 export const ENTER = "Enter";
 export const EQUAL = "=";
 export const MEMORY_CLEAR = "MC";

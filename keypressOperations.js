@@ -9,7 +9,7 @@ import {
 } from "./script.js";
 
 import { equals } from "./utils.js";
-import { ERROR, BACKSPACE, ENTER, EQUAL } from "./constants.js";
+import { ERROR, ENTER, EQUAL } from "./constants.js";
 //  Event Listeners.
 /**
  * @listens keypress - Listens for keypress events.
@@ -27,7 +27,7 @@ document.addEventListener("keydown", backSpaceEventHandler);
 function backSpaceEventHandler(e) {
   let inputStr = getInputStr();
   let displayStr = getDisplayStr();
-  if (e.key === BACKSPACE) {
+  if (e.key === "Backspace") {
     let updatedInputStr = inputStr.slice(0, -1);
     setInputStr(updatedInputStr);
     let updatedDisplayStr = displayStr.slice(0, -1);
