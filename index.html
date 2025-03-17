@@ -9,25 +9,69 @@
   <body>
     <main>
       <div class="history-wrapper">
-        <button class="history-btn">History</button>
+        <button class="history-btn" aria-label="View the calculation history">
+          History
+        </button>
         <div class="history-container">
           <p>Calculation History</p>
           <ul class="history-list"></ul>
         </div>
       </div>
-      <div class="display">0</div>
+      <div class="display" aria-live="polite" aria-atomic="true">0</div>
       <div class="calulate-degree">
-        <button class="highlight" id="deg" value="degree">DEG</button>
-        <button class="highlight" id="function-exponent" value="F-E">
+        <button
+          class="highlight"
+          id="deg"
+          value="degree"
+          aria-label="Switch to Degree or Radian"
+        >
+          DEG
+        </button>
+        <button
+          class="highlight"
+          id="function-exponent"
+          value="F-E"
+          aria-label="View the scientific notation"
+        >
           F-E
         </button>
       </div>
       <div class="memory-clear-container">
-        <button class="highlight fade-color" value="MC">MC</button>
-        <button class="highlight fade-color" value="MR">MR</button>
-        <button class="highlight" value="M+">M+</button>
-        <button class="highlight" value="M-">M-</button>
-        <button class="highlight" value="MS">MS</button>
+        <button
+          class="highlight fade-color"
+          value="MC"
+          aria-label="Clear the calculator memory"
+        >
+          MC
+        </button>
+        <button
+          class="highlight fade-color"
+          value="MR"
+          aria-label="Recall the calculator memory"
+        >
+          MR
+        </button>
+        <button
+          class="highlight"
+          value="M+"
+          aria-label="Add to the calculator memory"
+        >
+          M+
+        </button>
+        <button
+          class="highlight"
+          value="M-"
+          aria-label="Subtract the calculator memory"
+        >
+          M-
+        </button>
+        <button
+          class="highlight"
+          value="MS"
+          aria-label="Save the calculator memory"
+        >
+          MS
+        </button>
       </div>
       <div class="advance-functions">
         <div class="dropdown">
@@ -41,9 +85,9 @@
             <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
           </button>
           <div id="trigonometryDropdown" class="dropdown-content">
-            <button value="sin">sin(x)</button>
-            <button value="cos">cos(x)</button>
-            <button value="tan">tan(x)</button>
+            <button value="sin" aria-label="sine">sin(x)</button>
+            <button value="cos" aria-label="cosine">cos(x)</button>
+            <button value="tan" aria-label="tan">tan(x)</button>
           </div>
         </div>
         <div class="functions-dropdown">
@@ -57,24 +101,38 @@
             <img src="assets/arrow-down.svg" alt="More" aria-hidden="true" />
           </button>
           <div id="functionDropdown" class="function-dropdown-content">
-            <button value="floor">floor(x)</button>
-            <button value="ceil">ceil(x)</button>
+            <button value="floor" aria-label="Floor of">floor(x)</button>
+            <button value="ceil" aria-label="Ceil of">ceil(x)</button>
           </div>
         </div>
       </div>
       <div class="operations keys">
         <div class="row-1">
-          <button class="col" value="2nd">2<sup>nd</sup></button>
-          <button class="col" value="square">x<sup>2</sup></button>
-          <button class="col" value="√"><sup>2</sup>√x</button>
-          <button class="col" value="power">x<sup>y</sup></button>
-          <button class="col" value="10^x">10<sup>x</sup></button>
-          <button class="col" value="log">log</button>
-          <button class="col" value="ln">ln</button>
+          <button class="col" value="2nd" aria-label="Switch to second mode">
+            2<sup>nd</sup>
+          </button>
+          <button class="col" value="square" aria-label="square">
+            x<sup>2</sup>
+          </button>
+          <button class="col" value="√" aria-label="square root">
+            <sup>2</sup>√x
+          </button>
+          <button class="col" value="power" aria-label="X to power Y">
+            x<sup>y</sup>
+          </button>
+          <button class="col" value="10^x" aria-label="To the power of ten">
+            10<sup>x</sup>
+          </button>
+          <button class="col" value="log" aria-label="Logarithm">log</button>
+          <button class="col" value="ln" aria-label="Natural Logarithm">
+            ln
+          </button>
         </div>
         <div class="row-1">
-          <button class="col" value="π">π</button>
-          <button class="col" value="1/x"><sup>1</sup>/x</button>
+          <button class="col" value="π" aria-label="value of pie">π</button>
+          <button class="col" value="1/x" aria-label="Inverse of">
+            <sup>1</sup>/x
+          </button>
           <button class="col" value="(">(</button>
           <button class="col highlight number" value="7">7</button>
           <button class="col highlight number" value="4">4</button>
@@ -82,18 +140,28 @@
           <button class="col highlight number" value="+/-">+/-</button>
         </div>
         <div class="row-1">
-          <button class="col" value="e">e</button>
-          <button class="col" value="abs">| x |</button>
-          <button class="col" value=")">)</button>
+          <button class="col" value="e" aria-label="value of e">e</button>
+          <button class="col" value="abs" aria-label="absolute value">
+            | x |
+          </button>
+          <button class="col" value=")" aria-label="closed bracket">)</button>
           <button class="col highlight number" value="8">8</button>
           <button class="col highlight number" value="5">5</button>
           <button class="col highlight number" value="2">2</button>
           <button class="col highlight number" value="0">0</button>
         </div>
         <div class="row-1">
-          <button class="col" value="C">C</button>
-          <button class="col" value="exp">exp</button>
-          <button class="col" value="factorial">n!</button>
+          <button class="col" value="C" aria-label="clear the screen">C</button>
+          <button
+            class="col"
+            value="exp"
+            aria-label="Convert to scientific notation"
+          >
+            exp
+          </button>
+          <button class="col" value="factorial" aria-label="factorial">
+            n!
+          </button>
           <button class="col highlight number" value="9">9</button>
           <button class="col highlight number" value="6">6</button>
           <button class="col highlight number" value="3">3</button>
@@ -103,12 +171,14 @@
           <button class="col" value="backspace">
             <img src="assets/cross.svg" alt="remove an element" />
           </button>
-          <button class="col" value="%">mod</button>
-          <button class="col" value="/">÷</button>
-          <button class="col" value="*">x</button>
-          <button class="col" value="-">−</button>
-          <button class="col" value="+">+</button>
-          <button class="col equals" value="equals">=</button>
+          <button class="col" value="%" aria-label="modulus">mod</button>
+          <button class="col" value="/" aria-label="divide">÷</button>
+          <button class="col" value="*" aria-label="multiply">x</button>
+          <button class="col" value="-" aria-label="Subtract">−</button>
+          <button class="col" value="+" aria-label="add">+</button>
+          <button class="col equals" value="equals" aria-label="equals">
+            =
+          </button>
         </div>
       </div>
     </main>
